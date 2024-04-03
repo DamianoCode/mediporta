@@ -11,7 +11,6 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Paper from "@mui/material/Paper";
 import Chip from "@mui/material/Chip";
-import Input from "@mui/material/Input";
 import TextField from "@mui/material/TextField";
 import { visuallyHidden } from "@mui/utils";
 
@@ -174,9 +173,22 @@ export default function DataTable() {
             </TableBody>
           </Table>
         </TableContainer>
+        {isError && (
+          <Box
+            sx={{
+              width: "100%",
+              height: "20vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            Błąd przy pobieraniu danych
+          </Box>
+        )}
         <TablePagination
           component="div"
-          count={data?.quota_max * rowsPerPage ?? 0}
+          count={(data?.quota_max ?? 0) * rowsPerPage}
           rowsPerPage={rowsPerPage}
           page={page - 1}
           onPageChange={handleChangePage}

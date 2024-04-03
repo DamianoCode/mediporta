@@ -18,6 +18,12 @@ const useFetchData = (initialUrl) => {
         const response = await fetch(url, { signal });
         const json = await response.json();
 
+        if (json.error_id) {
+          setIsError(true);
+          setIsLoading(false);
+          return null;
+        }
+
         setData(json);
       } catch (error) {
         setIsError(true);

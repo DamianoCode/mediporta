@@ -117,7 +117,7 @@ export default function DataTable() {
     {
       id: "name",
       numeric: false,
-      disablePadding: true,
+      disablePadding: false,
       label: "Nazwa",
     },
     {
